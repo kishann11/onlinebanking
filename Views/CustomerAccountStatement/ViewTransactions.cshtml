@@ -1,0 +1,150 @@
+﻿@using OnlineBanking.Data
+@model List<Accounts>
+ @{int x = 1,accno,bal; string cr, dt; }
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/scripts/jquery-1.10.2.js"></script>
+    <script src="~/scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/scripts/viewstatements.js"></script>
+    <script src="~/scripts/Pagination.js"></script>
+    <link href="~/Content/reset.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/pagination.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <title>View Statements</title>
+</head>
+<body class="container-fluid" style="background-color:#f2f2f2; min-width:335px">
+    <div class="col-md-12" id="main">
+        <div class="col-md-12">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">The People's Bank</a>
+                    </div>
+                    <div class="collapse navbar-collapse" align="center" id="myNavbar">
+                        <ul class="nav navbar-nav navlist">
+                            <li><a href="/Customer/Index">&nbsp;&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                            <li>
+                                <a href="/Homepage/Instruction">&nbsp;&nbsp;&nbsp;&nbsp;Instructions&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+                            </li>
+                            
+
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/HomePage/Logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row page-header col-md-12" style="margin-top:80px">
+            <div class="col-md-3 img-responsive" align="center"><a href="Index"><img style="opacity:0.7; width:40%; height:auto;" src="~/Images/PeopleBank.jpg" /></a></div>
+            <div class="col-md-6" align="center"><div class="col-md-12"><h5 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; width:100%; font-size:4vw;">The People's Bank</h5></div></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div>
+            <div class="col-md-3 navbar-left" align="center"></div>
+            <div class="col-md-6" align="center">
+                <form class="form-horizontal" method="post" id="viewStatements" action="TransactionHistory">
+                    <div class="form-group">
+                        <div class="col-md-12" align="center"><h3>View Statements</h3></div><br /><br />
+                        <div class="col-md-3"><label for="account" class="control-label">Select Account</label></div>
+                        <div class="col-md-9">
+                            <select class="form-control" id="account" name="selectedaccount">
+                                @{
+                                    foreach (var item in Model)
+                                    {
+                                        <option value="@item.accountNum">@item.accountNum--@item.accountType</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" align="center">
+                        <div class="col-md-6">
+                            <input type="radio" class="radio-inline" checked name="selected" value="last10" id="radio1" onclick="HideDate();" />
+                            <label for="lastten" class="control-label">Last 10 transactions</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="radio" class="radio-inline" name="selected" value="datefromto" id="radio2" onclick="ShowDate();" />
+                            <label for="daterange" class="control-label">By Date Range</label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12" id="dates" align="center" style="display:none;">
+                        <div class="col-md-6 form-inline">
+                            <label for="fromdate" class="control-label">From Date</label>
+                            <input type="date" class="form-control glyphicon glyphicon-calendar" onkeydown="return false" name="from" id="fromdate" />
+                        </div>
+                        <div class="col-md-6 form-inline">
+                            <label for="todate" class="control-label">To Date</label>
+                            <input type="date" class="form-control glyphicon glyphicon-calendar" onkeydown="return false" name="to" id="todate" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12" align="center">
+                            <button onclick="Fetch_Transactions(); return false;" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="col-md-12" id="switch_off">
+
+                    <label>Account Summary for Account Num:@ViewData["AccNo"]      Current Balance:@ViewData["Bal"] @{bal = int.Parse(ViewData["Bal"].ToString());}</label>
+                    <table class="table-bordered" style="border:double;" id="tblData">
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Transaction Id</th>
+                            <th>Account No.</th>
+                            <th>Credit</th>
+                            <th>Debit</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Balance</th>
+
+                        </tr>
+
+                        @{
+                            foreach (var transaction in ViewBag.Transactions)
+                            {
+                                <tr>
+                                    <td>@x @{x++;}</td>
+                                    <td>@transaction.transactionId</td>   @{ if (transaction.senderAccNo == int.Parse(@ViewData["AccNo"].ToString())) { cr = "-"; dt = (transaction.amount).ToString(); accno = transaction.recieverAccNo;bal = bal + int.Parse(dt); }
+                                        else { dt = "-"; cr = (transaction.amount).ToString(); accno = transaction.senderAccNo; bal = bal - int.Parse(cr); }
+                                    }
+                                    <td>@accno</td>
+                                    <td>@cr</td>
+                                    <td>@dt</td>
+                                    <td><input type="date" value="@transaction.date" readonly disabled/></td>
+                                    <td>@transaction.time</td>
+                                    <td>@bal</td>
+                                </tr>
+                                        }
+                        }
+
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-3 navbar-right" align="center"></div>
+        </div>
+    </div>
+</body>
+</html>
