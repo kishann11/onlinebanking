@@ -1,0 +1,96 @@
+﻿@using OnlineBanking.Data
+@model List<CustomerDetails>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src=""></script>
+    <link href="~/Content/reset.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="~/Content/TableStyles.css" rel="stylesheet" />
+    <title>View Profile</title>
+</head>
+<body class="container-fluid" style="background-color:#f2f2f2; min-width:335px">
+    <div class="col-md-12" id="main">
+        <div class="col-md-12">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">The People's Bank</a>
+                    </div>
+                    <div class="collapse navbar-collapse" align="center" id="myNavbar">
+                        <ul class="nav navbar-nav navlist">
+                            <li><a href="/Customer/Index">&nbsp;&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                            <li>
+                                <a href="/Homepage/Instruction">&nbsp;&nbsp;&nbsp;&nbsp;Instructions&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+                            </li>
+                            
+
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/HomePage/Logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row page-header col-md-12" style="margin-top:80px">
+            <div class="col-md-3 img-responsive" align="center"><a href="Index"><img style="opacity:0.7; width:40%; height:auto;" src="~/Images/PeopleBank.jpg" /></a></div>
+            <div class="col-md-6" align="center"><div class="col-md-12"><h5 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; width:100%; font-size:4vw;">The People's Bank</h5></div></div>
+            <div class="col-md-3"></div>
+        </div>
+        <div>
+            <div class="col-md-3"></div>
+            <div class="col-md-6" align="center">
+                <table id="t01" style="width:70%">
+                    @{
+
+                        foreach (var cust in Model)
+                        {
+
+                            <tr>
+                                <th>Name:</th>
+                                <td>@cust.firstName @cust.lastName</td>
+                            </tr>
+                            <tr>
+                                <td>Date Of Birth:</td>
+                                <td><input type="date" value="@cust.dateOfBirth" readonly disabled/></td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>@cust.email</td>
+                            </tr>
+                            <tr>
+                                <td>Address:</td>
+                                <td>@cust.address</td>
+                            </tr>
+                            <tr>
+                                <th>Contact Number:</th>
+                                <td>@cust.phone</td>
+                            </tr>
+                        }
+                    }
+                    <tr>
+
+
+                </table>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</body>
+</html>
