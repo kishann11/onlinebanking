@@ -1,0 +1,137 @@
+﻿
+        
+.body
+{
+background: #780206;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+}
+ .panel-heading {
+            background-color: blue;
+            font-family: 'Times New Roman', Times, serif;
+        }
+.jumbotron
+        {
+            background-color:red;
+            max-height:50%;
+        }
+        .panel-heading
+        {
+            background-color: blue;
+            font-family:'Times New Roman', Times, serif;
+        }
+
+        .row_class
+        {
+           background: #abbaab;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ffffff, #abbaab);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ffffff, #abbaab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+
+
+        }
+
+         .dropbtn {
+            background-color: #f6f6f6;
+            color: black;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #CCCCCC;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #CCCCCC;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+
+        
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+    
+}
+
+.active {
+    background-color: #4CAF50;
+    
+}
+
+div.container-fluid h2 {
+                padding-top:1%;
+                padding-left:2%;
+                text-align: left;
+                font-family:'Lucida Sans';
+                font-size: 4vw;
+                font-style: oblique;
+                font-weight: normal;
+                text-decoration: none;
+                text-transform: inherit;
+                color: #ffffff;
+                opacity:1.0;
+                
+            }
+            
+ .image { 
+                     position: relative; 
+                     width: 100%; /* for IE 6 */
+                   }
+ h2 { 
+                     position: absolute; 
+                     top: 10%; 
+                     left: 0; 
+                    width: 100%; 
+                }
+

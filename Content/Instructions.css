@@ -1,0 +1,11 @@
+﻿body {
+}
+
+ol{
+    list-style:decimal;
+    margin-left:3%;
+}
+marquee{
+    border:BLACK 3px SOLID;
+    font-family:'Times New Roman',Times, serif;
+}
