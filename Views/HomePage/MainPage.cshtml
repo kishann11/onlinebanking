@@ -1,0 +1,139 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>The People's Bank</title>
+
+<link href="~/Content/reset.css" rel="stylesheet" />
+<link href="~/Content/mainstyles.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="~/scripts/MainPage.js"></script>
+</head>
+<body class="container-fluid" style="background-color:#f2f2f2; min-width:335px;padding-top:2px">
+    <div class="col-md-12" id="main">
+
+        <div class="col-md-12">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home" style="color:dimgrey;"></span> The People's Bank</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav" style="float:right;">
+
+
+                            
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Header -->
+        <header class="w3-display-container w3-content w3-wide" id="home" style="margin-top:48px;">
+            <div class="container-fluid" style="width:100%">
+                <img class="img-responsive" style="margin-left:-25%;opacity:1.0; min-width:1px;min-height:100px; height:60%; width:150% ; max-height:350px; max-width:1700px" src="~/Images/Bridge.jpg" alt="People's Bank">
+                <h2> The People's Bank</h2>
+            </div>
+
+        </header><br />
+
+        <div class="col-md-12">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Are you new to our site?
+                    </div>
+                    <div class="panel-body">
+                        <a href="/Homepage/Instruction"><span class="glyphicon glyphicon-question-sign"></span> Click me for instructions </a>
+                    </div>
+                </div>
+                <div>
+                    <ul>
+                        <li style="width:50%"><a id="CustLink" onclick="Customer_click();" style="background-color:#4CAF50">Customer</a></li>
+                        <li style="width:50%"><a id="BankLink" onclick="Banker_click();">Banker</a></li>
+
+                    </ul>
+                </div>
+                <div id="CustomerSignIn" style="display:block;background-image:none ">
+                    <br /><strong> Welcome to Customer Log In</strong><br /><br />
+                        <div class="col-md-12"><label name="bankerError">@ViewData["CustomerMessage"]</label>
+                  
+                                        
+                                            <script>
+                        if('@TempData["CustomerMessage"]'=="Password Reset Successfully")
+                        {
+                            toastr.success("Password Reset Successfully,Done!");
+                        }
+                        else 
+                            if ('@TempData["CustomerMessage"]' == "Invalid Username or Password") {
+                                toastr.error("Invalid Username or Password,Error!");
+                            }
+                        
+                                            </script>
+</div>
+                    <form method="post" action="~/Homepage/CustomerLogin">
+                        <div class="form-group">
+                            <label>CustomerID:</label>
+                            <input type="text" class="form-control" id="CustomerUsername" name="cid" placeholder="Enter customerID...">
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" class="form-control" id="CustomerPassword" name="cpass" placeholder="Enter password...">
+                        </div>
+                        <div class="form-group">
+                            <a href="~/Homepage/ForgotCustomerId"><label>Forgot CustomerId </label></a>   <a href="~/Homepage/ForgotPassword"><label>Forgot password</label></a>
+                        </div>
+                        <button onclick="Customer_Login(); return false;" class="btn btn-default">Submit</button>
+                        
+                    </form>
+                </div>
+                <div id="BankerSignIn" style="display:none">
+                    <br /><strong>Welcome to Banker Log In</strong><br /><br />
+                    <div class="col-md-12">
+                        <script>
+                            if('@TempData["BankerMessage"]'=="Invalid Username or Password")
+                        {
+                                toastr.error("Invalid Username or Password,Error!");
+                                Banker_click();
+                        } </script>
+
+                    </div>
+                    <form method="post" id="BankerLoginForm" action="~/Homepage/BankerLogin">
+                        <div class="form-group">
+                            <label>BankerID:</label>
+                            <input type="text" class="form-control" id="BankerUsername" name="bankerUname" placeholder="Enter BankerID..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" class="form-control" id="BankerPassword" name="bankerPassword" placeholder="Enter password..." req>
+                        </div>
+                        <button class="btn btn-default" onclick="Banker_Login(); return false;">Submit</button>
+
+                    </form>
+                </div></div></div></div>
+
+
+
+</body>
+</html>

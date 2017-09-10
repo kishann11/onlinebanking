@@ -1,0 +1,167 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Instructions</title>
+    <script src="~/scripts/InstructionPage.js"></script>
+    <link href="~/Content/reset.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="~/Content/Instructions.css" rel="stylesheet" />
+</head>
+<body class="container-fluid" style="background-color:#f2f2f2; min-width:335px">
+    <div class="col-md-12" id="main">
+        <div class="col-md-12">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">The People's Bank</a>
+                    </div>
+                    <div class="collapse navbar-collapse" align="center" id="myNavbar">
+                        <ul class="nav navbar-nav navlist">
+                            <li><a href="Index">&nbsp;&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                          
+                            
+
+                        </ul>
+                        
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row page-header col-md-12" style="margin-top:80px">
+            <div class="col-md-3 img-responsive" align="center"><a href="Index"><img style="opacity:0.7; width:40%; height:auto;" src="~/Images/PeopleBank.jpg" /></a></div>
+            <div class="col-md-6" align="center"><div class="col-md-12"><h5 style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; width:100%; font-size:4vw;">The People's Bank</h5></div></div>
+            <div class="col-md-3"></div>
+        </div>
+        <strong><marquee>||Always maintain $5000 as a minimum balance||If your balance goes below $5000, your credit score will reduce||You can open a new account only if the credit score is good||Please read the instructions for choosing a password carefully||Per day transactions over 10,000 will be flagged. </marquee></strong>
+        <div class="panel panel-success">
+            <!--Registration-->
+            <div class="panel-heading">
+                1) Registering Account
+            </div>
+            <div class="panel-body">
+                <ol type="1">
+                    <li>Go to your nearest People's Bank store.</li>
+                    <li>Ensure you have the following details ready: SSN, Name, Date of Birth, Address, Phone Number and Email Id.</li>
+                    <li>You have to deposit a minimum of $5000 to open an account.</li>
+                    <li>Bring an original and photocopy of your Passport/Driver's Licence.</li>
+                    <li>Bring an original and photocopy of your SSN.</li>
+                    <li>Ensure you receive a CustomerID and temporary password.</li>  
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <!--First time login-->
+            <div class="panel-heading">
+                2) First Time Login
+            </div>
+            <div class="panel-body">
+                <ol type="1">
+                    <li>Enter the CustomerID and temporary password assigned to you by bank and press submit.</li>
+                    <li>Now enter your new password twice, the latter for confirmation.</li>
+                    <li>You will now be redirected to security questions page.</li>
+                    <li>For first security question, choose one out of the ten available questions and enter answer.</li>
+                    <li>For second security question, write any question of your choice and enter an answer.</li>
+                    <li>Click secure account. Your account is now secure.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <!--Password Requiirements-->
+
+
+            <div class="panel-heading">
+                3) Password Requirements
+            </div>
+            <div class="panel-body">
+                <ol type="1">
+                    <li>Your password must have a minimum length of 8 characters.</li>
+                    <li>It should have atleast one uppercase letter, one lower case letter, one number and one special character.</li>
+                    <li>Special characters include: !,#,$,%,^,&,*,-</li>
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <!--Transferring funds-->
+
+            <div class="panel-heading">
+                4) Transferring Funds
+            </div>
+            <div class="panel-body">
+                <ol type="1">
+                    <li>After logging in successfully, click on transfer funds.</li>
+                    <li>If you already have a beneficiary, select the beneficiary.
+                    <li>Enter the amount you want to transfer.</li>
+                    <li>Click on Transfer Funds button.</li>
+                    <li>If you want to add a new beneficiary, click on add beneficiary.</li>
+                    <li>Enter beneficiary's account number and custom name.</li>
+                    <li>Click submit.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <!--Forgot Password-->
+
+
+            <div class="panel-heading">
+                5) Forgot Password
+            </div>
+            <div class="panel-body">
+                <ol type="1">
+                    <li>If you've forgotten your password, in the login page, click forgot password.</li>
+                    <li>You will be prompted to answer your security questions.</li>
+                    <li>Once you answer the questions correctly, you'll be redirected to change password page.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <!--Forgot CustomerID-->
+
+
+            <div class="panel-heading">
+                6) Forgot CustomerID
+            </div>
+            <div class="panel-body">
+                <ol type="1">
+                    <li>If you've forgotten your CustomerID, in the login page, click on forgot CustomerID.</li>
+                    <li>You will be prompted to write your SSN number.</li>
+                    <li>You will then have to answer your security questions.</li>
+                    <li>After answering questions correctly, you will then receive your CustomerID.</li>
+                </ol>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <!--Close Account-->
+
+
+
+            <div class="panel-heading">
+                7) Delete Account
+            </div>
+            <div class="panel-body">
+                <ol type="1">
+                    <li>To delete an account, ensure you have 0 balance left in your account.</li>
+                    <li>Go to your nearest People's Bank store and request them to delete the account.</li>
+                </ol>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
